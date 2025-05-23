@@ -1,7 +1,5 @@
-// CourseCard.tsx
-import React from 'react';
-import { SvgStar } from './SvgStar';
-import { SvgRightDiagonalArrow } from './SvgRightDiagonalArrow';
+import { SvgRightDiagonalArrow } from "@/components/ui/SvgRightDiagonalArrow";
+import { SvgStar } from "@/components/ui/SvgStar";
 
 interface ProjectCardProps {
   title: string;
@@ -11,13 +9,7 @@ interface ProjectCardProps {
   imageUrl: string;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  description,
-  href,
-  imageAlt,
-  imageUrl,
-}) => {
+export const ProjectCard = ({ title, description, imageAlt, imageUrl }: ProjectCardProps) => {
   return (
     <li className="mb-12">
       {/*Projeto 1*/}
@@ -28,12 +20,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <a href="" className="inline-flex items-baseline font-medium leading-tight  text-slate-200  hover:text-teal-300 group/link text-base">
               <span className="absolute -inset-x-4 inset-y-2.5 md:-inset-x-6 md:-inset-y-4 lg:block hidden"></span>
               <span className="inline-block">
-                Build a Spotify Connected App
+                {title}
                 <SvgRightDiagonalArrow />
               </span>
             </a>
           </h3>
-          <p className="mt-2 text-sm leading-normal">Video course that teaches how to build a web app with the Spotify Web API. Topics covered include the principles of REST APIs, user auth flows, Node, Express, React, Styled Components, and more.</p>
+          <p className="mt-2 text-sm leading-normal">
+            {description}
+          </p>
           <a href="#" aria-label="500 stars on GitHub (opens in a new tab)" className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300" target="_blank">
             <SvgStar />
             <span>500</span>
@@ -71,8 +65,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </li>
           </ul>
         </div>
-        <img className="aspect-video object-cover rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1" src="https://files.tecnoblog.net/wp-content/uploads/2021/04/alexander-shatov-JlO3-oY5ZlQ-unsplash-scaled-e1618436154448.jpg" alt="" width={200} height={48} />
+        <img
+          className="aspect-video object-cover rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+          src={imageUrl}
+          alt={imageAlt}
+          width={200}
+          height={48} />
       </div>
     </li>
   );
-};
+}
